@@ -25,7 +25,10 @@
     <main class="container">
         <div class="bg-light p-5 rounded">
             <h1>GoInxer - Get token google cloud</h1>
-            <div style="padding-top: 20px;">
+            <div style="padding: 20px 0;">
+                <input type="text" class="form-control" id="access-token" disabled>
+            </div>
+            <div style="padding: 20px 0 30px 0;">
                 <a class="btn btn-lg btn-primary" href="#" role="button" id="get-token">Get google cloud token</a>
             </div>
         </div>
@@ -51,7 +54,10 @@
         }
         $(document).ready(function () {
             $(document).on('click', '#get-token', function () {
-                console.log(get_callback_params());
+                var access_token = get_callback_params()['access_token'];
+                if (access_token){
+                    $("input#access-token").val(access_token);
+                }
                 google_oauth();
             });
         });
