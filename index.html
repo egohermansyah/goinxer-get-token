@@ -25,18 +25,35 @@
     <main class="container">
         <div class="bg-light p-5 rounded">
             <h1>GoInxer - Get token google cloud</h1>
+            <div style="padding-top: 20px;">
+                <a class="btn btn-lg btn-primary" href="#" role="button" id="get-token">Get google cloud token</a>
+            </div>
         </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script>
         function google_oauth() {
             var api = 'https://accounts.google.com/o/oauth2/v2/auth',
-		    client_id = '64031222904-6cmmu6ndouu99oh10u5kgp4ckvn90kcc.apps.googleusercontent.com',
-		    scope = encodeURIComponent([
-                'https://www.googleapis.com/auth/cloudplatformprojects'
-            ]),
-            redirect = encodeURIComponent('https://egohermansyah.github.io/goinxer-get-token/');
+                client_id = '64031222904-6cmmu6ndouu99oh10u5kgp4ckvn90kcc.apps.googleusercontent.com',
+                scope = encodeURIComponent([
+                    'https://www.googleapis.com/auth/cloudplatformprojects'
+                ]),
+                redirect = encodeURIComponent('https://egohermansyah.github.io/goinxer-get-token/');
             window.location = `https://accounts.google.com/o/oauth2/v2/auth?include_granted_scopes=true&response_type=token&state=state_parameter_passthrough_value&redirect_uri=${redirect}&client_id=${client_id}&scope=${scope}`;
         }
+        function get_callback_params() {
+            params = {};
+            window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                params[key] = value;
+            });
+            return params;
+        }
+        $(document).ready(function () {
+            $(document).on('click', '#get-token', function () {
+                console.log(get_callback_params());
+                google_oauth();
+            });
+        });
     </script>
 </body>
