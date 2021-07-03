@@ -53,11 +53,11 @@
             return params;
         }
         $(document).ready(function () {
+            var access_token = get_callback_params()['access_token'];
+            if (access_token) {
+                $("input#access-token").val(access_token);
+            }
             $(document).on('click', '#get-token', function () {
-                var access_token = get_callback_params()['access_token'];
-                if (access_token){
-                    $("input#access-token").val(access_token);
-                }
                 google_oauth();
             });
         });
