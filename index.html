@@ -53,6 +53,7 @@
         $(document).ready(function () {
             var access_token = get_callback_params()['access_token'];
             if (access_token) {
+                console.log(get_callback_params());
                 $("input#access-token").val(access_token);
             }
             $(document).on('click', '#get-token', function () {
