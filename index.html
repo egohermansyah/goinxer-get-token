@@ -39,7 +39,7 @@
         function google_oauth() {
             var api = 'https://accounts.google.com/o/oauth2/v2/auth',
                 client_id = '64031222904-6cmmu6ndouu99oh10u5kgp4ckvn90kcc.apps.googleusercontent.com',
-                scope = encodeURIComponent('https://www.googleapis.com/auth/cloud-platform')+encodeURIComponent('https://www.googleapis.com/auth/webmasters'),
+                scope = encodeURIComponent('https://www.googleapis.com/auth/cloud-platform')+'+'+encodeURIComponent('https://www.googleapis.com/auth/webmasters'),
                 redirect = encodeURIComponent('https://egohermansyah.github.io/goinxer-get-token/');
             window.location = `https://accounts.google.com/o/oauth2/v2/auth?include_granted_scopes=true&response_type=token&state=state_parameter_passthrough_value&redirect_uri=${redirect}&client_id=${client_id}&scope=${scope}`;
         }
